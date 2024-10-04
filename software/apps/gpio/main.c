@@ -21,6 +21,10 @@ int main(void) {
   // Control LED with raw MMIO
   // Microphone LED is P0.20 and active high
   // Add code here
+  *(uint32_t*)(0x50000514) = 0x00100000; // DIR
+  *(uint32_t*)(0x50000504) = 0x00100000; // OUT
+  
+
 
   // loop forever
   printf("Looping\n");
