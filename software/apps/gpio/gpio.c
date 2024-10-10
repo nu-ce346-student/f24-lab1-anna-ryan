@@ -46,7 +46,6 @@ void gpio_config(uint8_t gpio_num, gpio_direction_t dir) {
       port_1->PIN_CNF[gpio_pin] = 3;
     }
   }
-  printf("port0->PIN_CNF: %ld\n", port_1->PIN_CNF[gpio_pin]);
 }
 
 // Inputs: 
@@ -58,13 +57,11 @@ void gpio_set(uint8_t gpio_num) {
   uint32_t gpio_pin = gpio_num & 0x1F;
   uint32_t port = gpio_num >> 5;
 
-  printf("gpio_pin: %ld, port: %ld\n", gpio_pin, port);
   if (!port) {
     port_0->OUTSET = 1 << gpio_pin;
   } else {
     port_1->OUTSET = 1 << gpio_pin;
   }
-  printf("outset: %d\n", 1 << gpio_pin);
 }
 
 // Inputs: 
@@ -106,5 +103,11 @@ void gpio_print(void) {
   // You don't otherwise have to write anything here
   // printf("port_0_DIR: %p\tport_0_pincnf[18]: %p\n", &port_0->DIR, &port_0->PIN_CNF[18]);
   // printf("%d", gpio_read(22));
+  // printf("port_0_DIR: %p, port_1_DIR: %p\n", &port_0->DIR, &port_1->DIR);
+  // printf("port_0_OUT: %p, port_1_OUT: %p\n", &port_0->OUT, &port_1->OUT);
+  // printf("port_0_PIN_CNF[21]: %p, port_1_PIN_CNF[5]: %p\n", &port_0->PIN_CNF[21], &port_1->PIN_CNF[5]);
+  printf("OUTCLR: %p\n", &port_0->OUTCLR);
+
+
 }
 
