@@ -31,7 +31,7 @@ void SWI1_EGU1_IRQHandler(void) {
 
 void GPIOTE_IRQHandler(void) {
   // Clear interrupt event
-  NRF_GPIOTE->EVENTS_IN[0] = 0;
+  //NRF_GPIOTE->EVENTS_IN[0] = 0;
 
   // Implement me
 }
